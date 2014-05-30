@@ -31,6 +31,14 @@ describe Tenant do
     expect(build(:tenant, password: '', password_confirmation: '')).not_to be_valid
   end
 
+  it 'should not be valid when password is less than 8 characters' do
+    expect(build(:tenant, password: '1234567', password_confirmation: '1234567')).not_to be_valid
+  end
+
+  it 'should not be valid when password and pasword confirmation are not matched' do
+    expect(build(:tenant, password: '123456788', password_confirmation: '123456889')).not_to be_valid
+  end
+
   it 'should be valid when valid fields given' do
     expect(build(:tenant)).to be_valid
   end
