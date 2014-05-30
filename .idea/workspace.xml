@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cbb3bd49-6bdf-4b42-b0e6-fb63019fdfbe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/support/factory_girl.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/factories/tenant_factory.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/bill-mate.iml" afterPath="$PROJECT_DIR$/.idea/bill-mate.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/tenant.rb" afterPath="$PROJECT_DIR$/app/models/tenant.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/unit/models/tenant_spec.rb" afterPath="$PROJECT_DIR$/spec/unit/models/tenant_spec.rb" />
+    <list default="true" id="cbb3bd49-6bdf-4b42-b0e6-fb63019fdfbe" name="Default" comment="Added validations for tenant model">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20140530140940_remove_salt_and_password_and_add_password_digest_to_tenants.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bill-mate.iws" />
@@ -52,8 +45,8 @@
       <file leaf-file-name="tenant.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/tenant.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11320755" vertical-offset="0" max-vertical-offset="636">
-              <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.16981132" vertical-offset="0" max-vertical-offset="636">
+              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -697,7 +690,11 @@
       <created>1401458290921</created>
       <updated>1401458290921</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added validations for tenant model">
+      <created>1401461394283</created>
+      <updated>1401461394283</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -742,7 +739,8 @@
     </option>
     <MESSAGE value="Ignore .idea in git&#10;" />
     <MESSAGE value="Well let's add .idea folder back" />
-    <option name="LAST_COMMIT_MESSAGE" value="Well let's add .idea folder back" />
+    <MESSAGE value="Added validations for tenant model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added validations for tenant model" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -814,8 +812,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/tenant.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11320755" vertical-offset="0" max-vertical-offset="636">
-          <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.16981132" vertical-offset="0" max-vertical-offset="636">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
           <folding />
         </state>
       </provider>
