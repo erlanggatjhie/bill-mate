@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530140940) do
+ActiveRecord::Schema.define(version: 20140612120541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentication_tokens", force: true do |t|
+    t.string   "token"
+    t.integer  "tenant_id"
+    t.integer  "expires_in"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authentication_tokens", ["tenant_id"], name: "index_authentication_tokens_on_tenant_id", using: :btree
 
   create_table "tenants", force: true do |t|
     t.string   "first_name"

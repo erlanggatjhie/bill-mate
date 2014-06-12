@@ -3,7 +3,7 @@ class Tenant < ActiveRecord::Base
 
   validates :first_name, presence: true, length: { maximum: 15 }
   validates :last_name, presence: true, length: { maximum: 15 }
-  validates :email_address, format: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+  validates :email_address, format: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/, uniqueness: true
   validates :password, length: { minimum: 8 }
 
   def self.authenticate(email_address, password)

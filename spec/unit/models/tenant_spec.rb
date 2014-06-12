@@ -27,6 +27,12 @@ describe Tenant do
     expect(build(:tenant, email_address: 'testtest.com')).not_to be_valid
   end
 
+  it 'should not be valid when email is not unique' do
+    email = 'test@test.com'
+    create(:tenant, email_address: email)
+    expect(build(:tenant, email_address: email)).not_to be_valid
+  end
+
   it 'should not be valid when password and password confirmation is empty' do
     expect(build(:tenant, password: '', password_confirmation: '')).not_to be_valid
   end
