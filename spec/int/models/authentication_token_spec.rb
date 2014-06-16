@@ -22,8 +22,37 @@ describe AuthenticationToken do
         expect(AuthenticationToken.count).to eq(0)
       end
 
-      it 'should generate token' do
+      it 'should not generate token' do
         expect(token).to be_nil
+      end
+    end
+  end
+
+  describe '.authorize?' do
+    context 'when valid credentials given' do
+      it 'should return true' do
+        authentication_token = create(:authentication_token)
+        tenant = authentication_token.tenant
+        expect(AuthenticationToken.authorize?(tenant.email_address, authentication_token.token)).to be_true
+      end
+    end
+
+    context 'when invalid credentials given' do
+      it 'should return false' do
+        authentication_token = create(:authentication_token)
+
+        expect(AuthenticationToken.authorize?('random_email_address', authentication_token.token)).to be_false
+      end
+    end
+
+    context 'when authentication already expired' do
+      it 'should return false' do
+        authentication_token = create(:authentication_token, expires_in: 3600)
+        tenant = authentication_token.tenant
+
+        Timecop.travel(Time.now + 1.hours) do
+          expect(AuthenticationToken.authorize?(tenant.email_address, authentication_token.token)).to be_false
+        end
       end
     end
   end
