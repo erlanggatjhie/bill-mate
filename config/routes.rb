@@ -1,5 +1,7 @@
 BillMate::Application.routes.draw do
   post 'tenants/authenticate', to: 'sessions#authenticate'
+  delete 'tenants/logout', to: 'sessions#logout'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

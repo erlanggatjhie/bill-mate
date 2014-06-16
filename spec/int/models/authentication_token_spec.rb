@@ -32,8 +32,8 @@ describe AuthenticationToken do
     context 'when valid credentials given' do
       it 'should return true' do
         authentication_token = create(:authentication_token)
-        tenant = authentication_token.tenant
-        expect(AuthenticationToken.authorize?(tenant.email_address, authentication_token.token)).to be_true
+
+        expect(AuthenticationToken.authorize?(authentication_token.tenant.email_address, authentication_token.token)).to be_true
       end
     end
 
@@ -48,11 +48,30 @@ describe AuthenticationToken do
     context 'when authentication already expired' do
       it 'should return false' do
         authentication_token = create(:authentication_token, expires_in: 3600)
-        tenant = authentication_token.tenant
 
         Timecop.travel(Time.now + 1.hours) do
-          expect(AuthenticationToken.authorize?(tenant.email_address, authentication_token.token)).to be_false
+          expect(AuthenticationToken.authorize?(authentication_token.tenant.email_address, authentication_token.token)).to be_false
         end
+      end
+    end
+  end
+
+  describe '.delete_token' do
+    context 'when successful' do
+      let!(:authentication_token) { create(:authentication_token) }
+
+      it 'should return true' do
+        expect(AuthenticationToken.delete_token(authentication_token.tenant.email_address, authentication_token.token)).to be_true
+      end
+
+      it 'should delete token from database' do
+        expect { AuthenticationToken.delete_token(authentication_token.tenant.email_address, authentication_token.token) }.to change(AuthenticationToken, :count).to(0)
+      end
+    end
+
+    context 'when not successful' do
+      it 'should return false' do
+        expect(AuthenticationToken.delete_token('a', 'token')).to be_false
       end
     end
   end

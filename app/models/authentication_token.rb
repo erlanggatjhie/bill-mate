@@ -5,6 +5,8 @@ class AuthenticationToken < ActiveRecord::Base
   validates :tenant, presence: true
   validates :expires_in, presence: true, numericality: {greater_than_or_equal_to: 0}
 
+  scope :find_token, -> (email_address, token) { includes(:tenant).where(tenants: { email_address: email_address }, token: token) }
+
   def expired?
     Time.now - created_at > expires_in
   end
@@ -17,7 +19,15 @@ class AuthenticationToken < ActiveRecord::Base
   end
 
   def self.authorize?(email_address, token)
-    authentication_token = AuthenticationToken.joins(:tenant).where(tenants: { email_address: email_address }, token: token)
+    authentication_token = find_token(email_address, token)
     !authentication_token.empty? && !authentication_token.first.expired?
+  end
+
+  def self.delete_token(email_address, token)
+    authentication_token = find_token(email_address, token)
+
+    unless authentication_token.empty?
+      authentication_token.first.destroy
+    end
   end
 end
