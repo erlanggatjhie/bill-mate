@@ -1,9 +1,11 @@
 class TenantsController < ApplicationController
   def create
-    if Tenant.create(tenant_params)
+    tenant = Tenant.new(tenant_params)
+
+    if tenant.save
       render nothing: true, status: 200
     else
-      render nothing: true, status: 400
+      render json: { errors: tenant.errors.messages }, status: 400
     end
   end
 
