@@ -5,6 +5,7 @@ describe Accomodation do
   it { should respond_to(:city) }
   it { should respond_to(:postcode) }
   it { should respond_to(:state) }
+  it { should have_many(:tenants) }
 
   it 'should not be valid when address is empty' do
     expect(build(:accomodation, address_line: '')).to_not be_valid

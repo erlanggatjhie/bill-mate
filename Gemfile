@@ -36,6 +36,7 @@ group :development, :test do
 	gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'timecop', '~> 0.7.1'
+  gem 'shoulda-matchers', require: false
 end
 
 # Use ActiveModel has_secure_password

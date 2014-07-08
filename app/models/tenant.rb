@@ -1,4 +1,5 @@
 class Tenant < ActiveRecord::Base
+  belongs_to :accomodation
   has_secure_password
 
   validates :first_name, presence: true, length: { maximum: 15 }

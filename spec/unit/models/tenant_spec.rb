@@ -7,6 +7,8 @@ describe Tenant do
 	it { should respond_to(:password_digest) }
 	it { should respond_to(:password) }
 
+  it { should belong_to(:accomodation) }
+
   it 'should not be valid when first name is empty' do
     expect(build(:tenant, first_name: '')).not_to be_valid
   end
