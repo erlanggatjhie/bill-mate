@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708112122) do
+ActiveRecord::Schema.define(version: 20140710122727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140708112122) do
   create_table "accomodations", force: true do |t|
     t.string   "address_line"
     t.string   "city"
-    t.string   "postcode"
+    t.integer  "postcode"
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20140708112122) do
   end
 
   add_index "authentication_tokens", ["tenant_id"], name: "index_authentication_tokens_on_tenant_id", using: :btree
+
+  create_table "bills", force: true do |t|
+    t.string   "description"
+    t.decimal  "amount",      precision: 10, scale: 2
+    t.date     "due_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tenants", force: true do |t|
     t.string   "first_name"
