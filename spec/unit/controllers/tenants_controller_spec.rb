@@ -20,7 +20,7 @@ describe TenantsController, type: :controller do
         tenant = double(Tenant)
 
         tenant.stub(:save) { false }
-        tenant.stub_chain(:errors, :messages) { { :password_confirmation=>["can't be blank"], :first_name=>["can't be blank"], :last_name=>["can't be blank"], :email_address=>["is invalid"] } }
+        tenant.stub_chain(:errors, :messages) { { password_confirmation: ["can't be blank"], first_name: ["can't be blank"], last_name: ["can't be blank"], email_address: ["is invalid"] } }
 
         Tenant.should_receive(:new).and_return(tenant)
 
@@ -32,7 +32,7 @@ describe TenantsController, type: :controller do
       end
 
       it 'should return error message as json' do
-        expect(response.body).to eq( { errors: { :password_confirmation=>["can't be blank"], :first_name=>["can't be blank"], :last_name=>["can't be blank"], :email_address=>["is invalid"] } }.to_json )
+        expect(response.body).to eq( { errors: { password_confirmation: ["can't be blank"], first_name: ["can't be blank"], last_name: ["can't be blank"], email_address: ["is invalid"] } }.to_json )
       end
     end
   end

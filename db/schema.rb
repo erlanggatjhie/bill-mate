@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140708112122) do
   create_table "accomodations", force: true do |t|
     t.string   "address_line"
     t.string   "city"
-    t.integer  "postcode"
+    t.string   "postcode"
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"

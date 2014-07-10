@@ -47,6 +47,13 @@ describe Tenant do
     expect(build(:tenant, password: '123456788', password_confirmation: '123456889')).not_to be_valid
   end
 
+  it 'should be valid when password is nil and it is not a new record' do
+    tenant = create(:tenant)
+    tenant.password = nil;
+
+    expect(tenant).to be_valid
+  end
+
   it 'should be valid when valid fields given' do
     expect(build(:tenant)).to be_valid
   end

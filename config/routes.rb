@@ -3,6 +3,8 @@ BillMate::Application.routes.draw do
   post 'tenants/create', to: 'tenants#create'
   delete 'tenants/logout', to: 'sessions#logout'
 
+  post 'accomodations/create', to: 'accomodations#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
