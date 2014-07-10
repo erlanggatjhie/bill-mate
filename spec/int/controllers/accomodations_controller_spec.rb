@@ -14,6 +14,10 @@ describe AccomodationsController, type: :controller do
         expect(Accomodation.count).to eq(1)
       end
 
+      it 'should have 2 tenants' do
+        expect(Accomodation.first.tenants.count).to eq(2)
+      end
+
       it 'should assign accomodation to tenant' do
         tenant.reload
         expect(tenant.accomodation).to eq(Accomodation.first)
